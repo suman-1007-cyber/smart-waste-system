@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Waste Management System</title>
+    <title>Smart Waste Management System - Register</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h2>Smart Waste Segregation & Collection Tracker</h2>
+        <h2>Create an Account</h2>
         
-        <form action="login_process.php" method="POST">
+        <form action="register_process.php" method="POST">
+            <div>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+
             <div>
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required placeholder="name@example.com">
@@ -21,11 +26,11 @@
                 <input type="password" id="password" name="password" required placeholder="••••••••">
             </div>
 
-            <button type="submit">Sign In</button>
+            <button type="submit">Register</button>
         </form>
 
         <div class="auth-footer">
-            <p>Don't have an account? <a href="register.php">Create Account</a></p>
+            <p>Already have an account? <a href="login.php">Sign In</a></p>
         </div>
     </div>
 </body>
