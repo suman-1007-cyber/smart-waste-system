@@ -18,6 +18,11 @@
 
             <button type="submit">Login</button>
         </form>
+
+        <!-- Link for new users to register -->
+        <div style="margin-top: 15px; text-align: center;">
+            <p>Don't have an account yet? <a href="register.php">Register / Create Account</a></p>
+        </div>
     </div>
 </body>
 </html>
