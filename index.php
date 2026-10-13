@@ -1,3 +1,8 @@
+<?php
+header("Location: register.php");
+exit();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
