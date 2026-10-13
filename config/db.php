@@ -1,26 +1,29 @@
 <?php
-// Determine environment parameters (Cloud env vars vs. Local XAMPP defaults)
-$host = getenv('DB_HOST') ?: 'localhost';
-$username = getenv('DB_USER') ?: 'root';$password = getenv('DB_PASS') ?: '';
-$database = getenv('DB_NAME') ?: 'smart_waste_system';$port = getenv('DB_PORT') ?: 3306;
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "smart_waste_system";
 
-// 1. Initial connection to MySQL server (without specifying database name first)
-$conn = new mysqli($host,$username, $password, "", $port);
+// Create database connection
+$conn = new mysqli($host, $username, $password);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// 2. Create database if it doesn't exist
-$sql = "CREATE DATABASE IF NOT EXISTS `$database`";
+// Create database if it doesn't exist
+$sql = "CREATE DATABASE IF NOT EXISTS $database";
 if ($conn->query($sql) === TRUE) {
     $conn->select_db($database);
 } else {
     die("Error creating database: " . $conn->error);
 }
 
-// 3. Auto-create users table if it doesn't exist
+
+// (Include the connection code above, then add this:)
+
+// Create users table
 $table_users = "CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -31,7 +34,7 @@ $table_users = "CREATE TABLE IF NOT EXISTS users (
 )";
 $conn->query($table_users);
 
-// 4. Auto-create complaints table if it doesn't exist
+// Create complaints table
 $table_complaints = "CREATE TABLE IF NOT EXISTS complaints (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -42,4 +45,7 @@ $table_complaints = "CREATE TABLE IF NOT EXISTS complaints (
     FOREIGN KEY (user_id) REFERENCES users(id)
 )";
 $conn->query($table_complaints);
+
+
+
 ?>
